@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    tools {
+        go 'go-1.4'
+    }
+
+    enviroment {
+        go111MODULE='on'
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                git 'https://github.com/bende112/motowayTest.git'
+                sh 'go test ./...'
+            }
+        }
+    }
+}
